@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mow</title>
+	<style>
+		#score > div {
+			display: none;
+		}
+		button[id ^= 'n'] {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>Goal A: 10</h1>
+	<div id="score">
+		<div id="a">a: 0/x</div>
+		<div id="b">b: 0/x</div>
+		<div id="c">c: 0/x</div>
+		<div id="d">d: 0/x</div>
+		<div id="e">e: 0/x</div>
+		<div id="f">f: 0/x</div>
+		<div id="g">g: 0/x</div>
+		<div id="h">h: 0/x</div>
+		<div id="i">i: 0/x</div>
+		<div id="j">j: 0/x</div>
+	</div>
+
+	<div id="choices">
+		<button id="n01" data-select=''>k</button>
+		<button id="n02" data-select=''>l</button>
+		<button id="n03" data-select=''>m</button>
+		<button id="n04" data-select=''>n</button>
+		<button id="n05" data-select=''>o</button>
+		<button id="n06" data-select=''>p</button>
+		<button id="n07" data-select=''>q</button>
+		<button id="n08" data-select=''>r</button>
+		<button id="n09" data-select=''>s</button>
+		<button id="n10" data-select=''>t</button>
+		<button id="n11" data-select=''>u</button>
+		<button id="n12" data-select=''>v</button>
+		<button id="n13" data-select=''>w</button>
+		<button id="n14" data-select=''>x</button>
+		<button id="n15" data-select=''>y</button>
+		<button id="n16" data-select=''>z</button>
+	</div>
+<script>
+	document.onreadystatechange = function() {
+		if (document.readyState === 'complete') {
+			var score = {};
+			ready(5);
+		}
+	}
+	
+	var buttons = document.querySelectorAll('button');
+	for (button of buttons) {
+		button.addEventListener('click', function(e) {
+			updateTotal(e.target.id);
+		});
+	}
+	var scoreboard = document.getElementById('score');
+	var choices = document.getElementById('choices');
+
+	function ready(n) {
+		score = {
+			a: 0,
+			b: 0,
+			c: 0,
+			d: 0,
+		};
+		for (letter in score) {
+			scoreboard.children[letter].style.display = 'block';
+		};
+		for (i = 0; i < n; i++) {
+			choices.children[i].style.display = 'block';
+		}
+	};
+
+	function updateTotal(id) {
+		switch (id) {
+			case 'n01':
+				score.a += 1;
+				score.b -= 1;
+				score.d = score.a * 2;
+				break;
+			case 'n02':
+				score.c += 4;
+				score.b -= 3;
+				score.d = score.b * 2;
+				break;
+			case 'n03':
+				score.c += 4;
+				score.b -= 3;
+				score.d = score.b * 2;
+				break;
+			case 'n04':
+				score.c += 4;
+				score.b -= 3;
+				score.d = score.b * 2;
+				break;
+		}
+	}
+</script>
+</body>
+</html>
